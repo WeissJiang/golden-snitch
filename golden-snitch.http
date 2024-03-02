@@ -1,0 +1,6 @@
+@golden_snitch_HostAddress = http://localhost:5157
+
+GET {{golden_snitch_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
