@@ -23,7 +23,8 @@ namespace golden_snitch.DTOs
         public const string EmptyField = "EmptyField";
         public const string AlreadyExists = "AlreadyExists";
         public const string CanNotFind = "CanNotFind";
-        public const string OtherError = "OtherError";
+        public const string ServerError = "ServerError";
+        public const string DatabaseError = "DatabaseError";
         // Add other error codes as needed
     }
 

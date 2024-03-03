@@ -1,4 +1,5 @@
-﻿using golden_snitch.Entities.Users;
+﻿using golden_snitch.Entities.Scheduler;
+using golden_snitch.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,6 +10,7 @@ namespace golden_snitch.Entities.Tickets
     [Comment("Tickets stands for the tasks with description and other props")]
     public class Ticket : GenericRecord
     {
+        [Key] public int Id { get; set; }
         [Required] public string Name { get; set; }
         public string Description { get; set; } = string.Empty;
         [Column(TypeName = "datetime")] public DateTime? DueDateUTC { get; set; }
@@ -19,8 +21,8 @@ namespace golden_snitch.Entities.Tickets
         public int OwnerId { get; set; }
         [ForeignKey("OwnerId")] public virtual User Owner { get; set; }
 
-        public int TaskId { get; set; }
-        [ForeignKey("TaskId")] public virtual Task Task { get; set; }
+        public int? JobId { get; set; }
+        [ForeignKey("JobId")] public virtual Job? Job { get; set; }
     }
 
     public static class TicketProcess

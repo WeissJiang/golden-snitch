@@ -3,8 +3,8 @@ using golden_snitch.Entities.Scheduler;
 using golden_snitch.Entities.Tickets;
 using golden_snitch.Entities.Users;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using static golden_snitch.Entities.Users.User;
+using Job = golden_snitch.Entities.Scheduler.Job;
 
 namespace golden_snitch.Entities;
 
@@ -21,8 +21,8 @@ public class EntitiesDbContext : DbContext
     // scheduler section
 
     public DbSet<Project> Projects { get; set; }
-    public DbSet<Scheduler.Task> Tasks { get; set; }
-    public DbSet<TaskTag> TaskTags { get; set; }
+    public DbSet<Job> Jobs { get; set; }
+    public DbSet<JobTag> JobTags { get; set; }
 
 
     public EntitiesDbContext(DbContextOptions<EntitiesDbContext> options)
@@ -57,7 +57,7 @@ public class EntitiesDbContext : DbContext
                     .HasDefaultValueSql("now()");
                 modelBuilder.Entity(entityType.ClrType)
                     .Property("TimeZone")
-                    .HasDefaultValue("Australia/Sydney");
+                    .HasDefaultValue("Australia/Melbourne");
             }
         }
 
@@ -77,5 +77,8 @@ public class EntitiesDbContext : DbContext
                     PrivilegeLevel = UserPrivilegeLevel.Standard
                 }
             );
+
+        modelBuilder.Entity<Job>()
+            .HasKey(x => x.Id);
     }
 }

@@ -5,7 +5,7 @@ namespace golden_snitch.Entities.Tickets
 {
     public class TicketComment : GenericRecord
     {
-        public int Id { get; set; }
+        [Key] public int Id { get; set; }
         public string Comment { get; set; } = string.Empty; // Optional by convention, can be null
   
         [Required] public int TicketId { get; set; }

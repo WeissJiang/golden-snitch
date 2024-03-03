@@ -31,7 +31,7 @@ namespace golden_snitch.Services.Tenants
             catch (Exception e)
             {
                 return ApiResponseError<IEnumerable<ResponseUser>>.GenerateUnknownError(
-                    ErrorCodes.OtherError, e.Message);
+                    ErrorCodes.ServerError, e.Message);
             }
         }
 
@@ -54,7 +54,7 @@ namespace golden_snitch.Services.Tenants
             catch (Exception e)
             {
                 return ApiResponseError<ResponseUser>.GenerateUnknownError(
-                    ErrorCodes.OtherError, e.Message);
+                    ErrorCodes.ServerError, e.Message);
             }
         }
     }

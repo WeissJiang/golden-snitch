@@ -1,4 +1,5 @@
 using golden_snitch.Entities;
+using golden_snitch.Services.Scheduler;
 using golden_snitch.Services.Tenants;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,8 @@ builder.Services.AddDbContext<EntitiesDbContext>(options =>
   options.UseSqlServer(connectString));
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
+
 
 var app = builder.Build();
 

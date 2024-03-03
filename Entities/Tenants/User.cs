@@ -1,7 +1,6 @@
 ﻿using golden_snitch.Entities.Tenants;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace golden_snitch.Entities.Users
 {
@@ -14,6 +13,8 @@ namespace golden_snitch.Entities.Users
             Admin,
             Super
         }
+
+        [Key] public int Id { get; set; }
 
         [MaxLength(30)]
         public string Name { get; set; }
